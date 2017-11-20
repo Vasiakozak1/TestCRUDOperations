@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCRUDOperations.Web", "TestCRUDOperations\TestCRUDOperations.Web.csproj", "{5789D514-D330-4EE8-B48B-EB4A3880F627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCRUDOperations.DataAccess", "TestCRUDOperations.DataAccess\TestCRUDOperations.DataAccess.csproj", "{10AB646D-C056-4681-9C16-4647CAC8DA71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5789D514-D330-4EE8-B48B-EB4A3880F627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5789D514-D330-4EE8-B48B-EB4A3880F627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5789D514-D330-4EE8-B48B-EB4A3880F627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5789D514-D330-4EE8-B48B-EB4A3880F627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10AB646D-C056-4681-9C16-4647CAC8DA71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10AB646D-C056-4681-9C16-4647CAC8DA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10AB646D-C056-4681-9C16-4647CAC8DA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10AB646D-C056-4681-9C16-4647CAC8DA71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {545243D4-5B42-4F9C-9134-D38C35AC19F2}
+	EndGlobalSection
+EndGlobal
