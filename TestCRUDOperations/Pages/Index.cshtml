@@ -7,11 +7,13 @@
     <div class="col-md-4"></div>
     <div class="col-md-5">
         <h4>Додати користувача</h4>
-        <form class="form-inline">
-            <input type="text" placeholder="First name" class="form-control" />
-            <input type="text" placeholder="Last name" class="form-control" />
-            <input type="text" placeholder="Age" class="form-control"/>
-            <input type="submit" class="form-control"/>
+        <form class="form-inline" id="userForm">
+            <input type="text" placeholder="First name" class="form-control" id="firstName" />
+            <input type="text" placeholder="Last name" class="form-control" id="lastName" />
+            <input type="text" placeholder="Age" class="form-control" id="age"/>
+            <div class="form-group">
+                <input type="submit" class="form-control"/>
+            </div>
         </form>
     </div>
 </div>
@@ -19,17 +21,17 @@
     <div class="col-md-4"></div>
     <div class="col-md-7">
         <h4>Додати проект</h4>
-        <form class="form-inline">
-            <input type="text" class="form-control" placeholder="Project name" class="form-control" />
-            <input type="text" class="form-control" placeholder="Description" class="form-control" />
+        <form class="form-inline" id="projectForm">
+            <input type="text" class="form-control" placeholder="Project name" id="projectName" />
+            <input type="text" class="form-control" placeholder="Description" id="projectDescription" />
             <h5 class="text-center">Початок</h5>
-            <input type="text" class="form-control" placeholder="День" />
-            <input type="text" class="form-control" placeholder="Місяць" />
-            <input type="text" class="form-control" placeholder="Рік" />
+            <input type="text" class="form-control" placeholder="День" id="startDay" />
+            <input type="text" class="form-control" placeholder="Місяць" id="startMonth" />
+            <input type="text" class="form-control" placeholder="Рік" id="startYear" />
             <h5 class="text-center">Кінець</h5>
-            <input type="text" class="form-control" placeholder="День" />
-            <input type="text" class="form-control" placeholder="Місяць" />
-            <input type="text" class="form-control" placeholder="Рік" />
+            <input type="text" class="form-control" placeholder="День" id="endDay" />
+            <input type="text" class="form-control" placeholder="Місяць" id="endMonth" />
+            <input type="text" class="form-control" placeholder="Рік" id="endYear" />
             <div class="form-group">
                 <input type="submit" class="form-control" />
             </div>
@@ -39,5 +41,65 @@
 <hr/>
 <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript">
+    $('#userForm')
+        .submit(function (event) {
+            event.preventDefault();
+            var firstName = $('#firstName').val();
+            var lastName = $('#lastName').val();
+            var age = $('#age').val();
+            var body = {
+                FirstName: firstName,
+                LastName: lastName,
+                Age: age
+            };
+            var bodyJson = JSON.stringify(body);
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/Users/Create',
+                data: bodyJson,
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    alert('The user is successfully added');
+                }
+                
+            });
+
+        });
+    $('#projectForm')
+        .submit(function(event) {
+            var projectName = $('#projectName').val();
+            var projectDescription = $('#projectDescription').val();
+
+            var startDay = $('#startDay').val();
+            var startMonth = $('#startMonth').val();
+            var startYear = $('#startYear').val();
+
+            var endDay = $('#endDay').val();
+            var endMonth = $('#endMonth').val();
+            var endYear = $('#endYear').val();
+
+            var body = {
+                Name: projectName,
+                Description: projectDescription,
+                StartDay: startDay,
+                StartMonth: startMonth,
+                StartYear: startYear,
+                EndDay: endDay,
+                EndMonth: endMonth,
+                EndYear: endYear
+            };
+            var bodyJson = JSON.stringify(body);
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/Projects/Create',
+                data: bodyJson,
+                contentType: 'application/json; charset=utf-8',
+                success: function(response) {
+                    alert('The project is successfully added');
+                }
+        });
+        });
     
 </script>

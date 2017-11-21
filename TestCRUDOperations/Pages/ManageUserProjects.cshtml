@@ -1,0 +1,54 @@
+﻿@page
+@model TestCRUDOperations.Web.Pages.ManageProjectUsersModel
+@{
+    ViewData["Title"] = "ManageProjectUsers";
+}
+<h2>ManageProjectUsers</h2>
+<h2 class="text-center">Attach or disconnect projects to @Model.GetUserName()</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Start date
+            </th>
+            <th>
+                End date
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @item.StartDate.ToShortDateString()
+                </td>
+                <td>
+                    @item.EndDate.ToShortDateString()
+                </td>
+                <td>
+                    <form method="post">
+                        <input type="submit" class="btn btn-default" asp-page-handler="AddProjectToUser" asp-route-id="@item.Id" asp-route-userId="@Model.GetCurrentUserId()" value="Add"/>
+                        <input type="submit" class="btn btn-default" asp-page-handler="RemoveProjectFromUser" asp-route-id="@item.Id" asp-route-userId="@Model.GetCurrentUserId()" value="Remove"/>
+                    </form>                    
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -24,7 +24,6 @@ namespace TestCRUDOperations.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<UsersProjects>()
                 .HasKey(uProjs => new {uProjs.ProjectId, uProjs.UserId});
         }

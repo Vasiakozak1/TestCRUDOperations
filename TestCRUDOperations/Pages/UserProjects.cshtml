@@ -1,0 +1,44 @@
+﻿@page
+@model TestCRUDOperations.Web.Pages.UserProjectsModel
+@{
+    ViewData["Title"] = "UserProjects";
+}
+<h2>UserProjects</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Start date
+            </th>
+            <th>
+                End date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @item.StartDate.ToShortDateString()
+            </td>
+            <td>
+                @item.EndDate.ToShortDateString()
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
