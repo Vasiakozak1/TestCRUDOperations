@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using TestCRUDOperations.DataAccess.Context;
 using TestCRUDOperations.DataAccess.Entities;
 using TestCRUDOperations.DataAccess.Repository;
@@ -17,7 +14,7 @@ namespace TestCRUDOperations.Web.Pages
         [BindProperty(SupportsGet = true, Name = "userId")]
         public int Id { get; set; }
         public User User { get; set; }
-        public UserProjectsModel(TestCRUDOperations.DataAccess.Context.ApplicationDbContext context)
+        public UserProjectsModel(ApplicationDbContext context)
         {
             _context = context;   
             Projects = new List<Project>();

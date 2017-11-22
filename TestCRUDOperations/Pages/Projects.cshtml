@@ -7,53 +7,72 @@
 
 <table class="table table-striped table-responsive table-bordered">
     <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Start date
-            </th>
-            <th>
-                End date
-            </th>
-            <th>
-                Actions
-            </th>
-            <th>
-                Users
-            </th>
-        </tr>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Start date
+        </th>
+        <th>
+            End date
+        </th>
+        <th>
+            Actions
+        </th>
+        <th>
+            Users
+        </th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Projects)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @item.StartDate.ToShortDateString()
-                </td>
-                <td>
-                    @item.EndDate.ToShortDateString()
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                    <a asp-page="./ManageProjectUsers" asp-route-id="@item.Id"></a>
-                    <a asp-page="./UsersOfProject" asp-route-id="@item.Id"></a>
-                </td>
-                <td>
-                    <button class="form-control">Show users</button>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model.Projects)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @item.StartDate.ToShortDateString()
+            </td>
+            <td>
+                @item.EndDate.ToShortDateString()
+            </td>
+            <td>
+                <a asp-page="./EditProject" asp-route-projId="@item.Id" class="btn btn-warning">Edit</a> |
+                <button class="deleteProject btn btn-danger" name="@item.Id">Delete</button> |
+                <a asp-page="./ManageUsersOfProject" asp-route-projId="@item.Id" class="btn btn-default">Manage users</a>
+                    
+            </td>
+            <td>
+                <a asp-page="./ProjectUsers" asp-route-projId="@item.Id">Show users</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.deleteProject')
+            .click(function(event) {
+                event.preventDefault();
+                var projectId = event.target.name;
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'api/Projects/Delete/' + projectId,
+                    success: function() {
+                        alert('Project has deleted');
+                        window.location.replace('./Projects');
+                    }
+            });
+            });
+    });
+</script>

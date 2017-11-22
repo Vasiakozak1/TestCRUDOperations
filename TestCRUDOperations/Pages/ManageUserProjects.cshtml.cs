@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -45,8 +46,8 @@ namespace TestCRUDOperations.Web.Pages
         {               
             Update();
             IRepository<User> userRepository = new Repository<User>(_context);
-            
-            Project selectedProject = Projects[id - 1];
+
+            Project selectedProject = Projects.First(proj => proj.Id == id);
             UsersProjects usersProjects = new UsersProjects()
             {
                User = User,

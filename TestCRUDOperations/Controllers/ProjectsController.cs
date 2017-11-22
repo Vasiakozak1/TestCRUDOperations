@@ -107,6 +107,8 @@ namespace TestCRUDOperations.Web.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("[action]/{id}")]
         public void Delete(int id)
         {
             using (ApplicationDbContext context = new ApplicationDbContext())

@@ -91,7 +91,7 @@ namespace TestCRUDOperations.Web.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("[action]/{id}")]
         public void Delete(int id)
         {
